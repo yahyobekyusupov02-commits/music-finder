@@ -23,12 +23,14 @@
 
       <div class="nav-links">
         <a href="#home">Bosh sahifa</a>
-        <a href="#discover">Kashf qilish</a>
-        <a href="#trending">Trendlar</a>
-        <a href="#favorites">Sevimlilar</a>
+        <a href="#discover" id="navDiscover">Kashf qilish</a>
+        <a href="#trending" id="navTrending">Ijodkorlar</a>
+        <a href="#favorites" id="navFavorites">Sevimlilar</a>
       </div>
 
-      <button class="login-btn">Kirish</button>
+      <div id="userNavContainer">
+        <button class="login-btn" id="loginBtn">Kirish</button>
+      </div>
     </nav>
 
     <section class="hero" id="home">
@@ -65,13 +67,12 @@
           <button id="searchButton">Qidirish</button>
         </div>
 
-        <div class="popular-searches">
+        <div class="popular-searches" id="popularSearches">
           <span>Mashhur:</span>
-
-          <button>yahyobek</button>
-          <button>yahyobek</button>
-          <button>yshyobek</button>
-          <button>yahyobek</button>
+          <button type="button" data-query="The Weeknd">The Weeknd</button>
+          <button type="button" data-query="Dua Lipa">Dua Lipa</button>
+          <button type="button" data-query="Travis Scott">Travis Scott</button>
+          <button type="button" data-query="Yahyobek">Yahyobek</button>
         </div>
       </div>
     </section>
@@ -81,100 +82,17 @@
         <div class="section-header">
           <div>
             <span class="section-label"> DISCOVER </span>
-
-            <h2>Bugungi trendlar</h2>
+            <h2 id="songsSectionTitle">Bugungi trendlar</h2>
           </div>
 
-          <button class="see-all">
+          <button class="see-all" id="seeAllBtn">
             Barchasini ko‘rish
             <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
 
-        <div class="music-grid">
-          <div class="music-card">
-            <div class="cover cover-one">
-              <span>01</span>
-
-              <button class="card-play">
-                <i class="fa-solid fa-play"></i>
-              </button>
-            </div>
-
-            <div class="song-info">
-              <div>
-                <h3>cnds nmc</h3>
-                <p>smc scs</p>
-              </div>
-
-              <button class="heart">
-                <i class="fa-regular fa-heart"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="music-card">
-            <div class="cover cover-two">
-              <span>02</span>
-
-              <button class="card-play">
-                <i class="fa-solid fa-play"></i>
-              </button>
-            </div>
-
-            <div class="song-info">
-              <div>
-                <h3>hsjlcs</h3>
-                <p>skcskk</p>
-              </div>
-
-              <button class="heart">
-                <i class="fa-regular fa-heart"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="music-card">
-            <div class="cover cover-three">
-              <span>03</span>
-
-              <button class="card-play">
-                <i class="fa-solid fa-play"></i>
-              </button>
-            </div>
-
-            <div class="song-info">
-              <div>
-                <h3>bbdsjkc</h3>
-                <p>yahyobek</p>
-              </div>
-
-              <button class="heart">
-                <i class="fa-regular fa-heart"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="music-card">
-            <div class="cover cover-four">
-              <span>04</span>
-
-              <button class="card-play">
-                <i class="fa-solid fa-play"></i>
-              </button>
-            </div>
-
-            <div class="song-info">
-              <div>
-                <h3>djncddsjc</h3>
-                <p>yahyobek</p>
-              </div>
-
-              <button class="heart">
-                <i class="fa-regular fa-heart"></i>
-              </button>
-            </div>
-          </div>
+        <div class="music-grid" id="musicGrid">
+          <!-- Dynamically populated from PocketBase -->
         </div>
       </section>
 
@@ -182,48 +100,25 @@
         <div class="section-header">
           <div>
             <span class="section-label"> ARTISTS </span>
-
             <h2>Mashhur ijodkorlar</h2>
           </div>
         </div>
 
-        <div class="artist-grid">
-          <div class="artist-card">
-            <h3>xs x,s</h3>
-            <p>yahyobek</p>
-          </div>
-
-          <div class="artist-card">
-            <h3>n jc sac</h3>
-            <p>yahyobek</p>
-          </div>
-
-          <div class="artist-card">
-            <h3>nsada</h3>
-            <p>yahyobek</p>
-          </div>
-
-          <div class="artist-card">
-            <div class="artist-image artist-four">♫</div>
-
-            <h3>xdjxns</h3>
-            <p>yahyobek</p>
-          </div>
+        <div class="artist-grid" id="artistGrid">
+          <!-- Dynamically populated from PocketBase -->
         </div>
       </section>
 
       <section class="favorites" id="favorites">
         <div class="favorite-text">
           <span class="section-label"> YOUR MUSIC </span>
-
           <h2>Sevimli qo‘shiqlaringiz</h2>
-
           <p>
             Yoqtirgan treklaringizni saqlang va ularni istalgan vaqtda qayta
             toping.
           </p>
 
-          <button class="favorite-btn">
+          <button class="favorite-btn" id="viewFavoritesBtn">
             <i class="fa-solid fa-heart"></i>
             Sevimlilarni ko‘rish
           </button>
@@ -235,42 +130,98 @@
       </section>
     </main>
 
+    <!-- Bottom Audio Player -->
     <div class="player">
       <div class="player-song">
+        <div class="mini-cover" id="playerMiniCover">♫</div>
         <div>
-          <h4>Blinding Lights</h4>
-          <p>The Weeknd</p>
+          <h4 id="playerSongTitle">Qo‘shiq tanlang</h4>
+          <p id="playerArtistName">—</p>
         </div>
       </div>
 
       <div class="player-controls">
-        <button>
+        <button id="playerPrevBtn" title="Oldingi trek">
           <i class="fa-solid fa-backward-step"></i>
         </button>
 
-        <button class="main-play">
+        <button class="main-play" id="playerPlayBtn" title="Ijro etish / To‘xtatish">
           <i class="fa-solid fa-play"></i>
         </button>
 
-        <button>
+        <button id="playerNextBtn" title="Keyingi trek">
           <i class="fa-solid fa-forward-step"></i>
         </button>
       </div>
 
       <div class="player-right">
-        <span>0:00</span>
+        <span id="playerCurrentTime">0:00</span>
 
-        <div class="progress">
-          <div class="progress-bar"></div>
+        <div class="progress" id="playerProgressBar" title="O‘tkazish">
+          <div class="progress-bar" id="playerProgressFill" style="width: 0%"></div>
         </div>
 
-        <span>3:20</span>
+        <span id="playerTotalTime">0:00</span>
 
-        <button>
+        <button id="playerVolumeBtn" title="Ovoz">
           <i class="fa-solid fa-volume-high"></i>
         </button>
       </div>
     </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="mainAudio" preload="auto"></audio>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+        
+        <div class="modal-tabs">
+          <button class="modal-tab-btn active" id="tabLoginBtn">Kirish</button>
+          <button class="modal-tab-btn" id="tabRegisterBtn">Ro‘yxatdan o‘tish</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label>Email yoki Foydalanuvchi nomi</label>
+            <input type="text" id="loginIdentity" placeholder="email@misol.uz" required />
+          </div>
+          <div class="form-group">
+            <label>Parol</label>
+            <input type="password" id="loginPassword" placeholder="Kamida 8 belgi" required />
+          </div>
+          <button type="submit" class="modal-submit-btn">Kirish</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" style="display: none;">
+          <div class="form-group">
+            <label>Ism</label>
+            <input type="text" id="regName" placeholder="Ismingiz" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="regEmail" placeholder="email@misol.uz" required />
+          </div>
+          <div class="form-group">
+            <label>Parol</label>
+            <input type="password" id="regPassword" placeholder="Kamida 8 belgi" minlength="8" required />
+          </div>
+          <div class="form-group">
+            <label>Parolni tasdiqlang</label>
+            <input type="password" id="regPasswordConfirm" placeholder="Parolni qayta kiriting" minlength="8" required />
+          </div>
+          <button type="submit" class="modal-submit-btn">Ro‘yxatdan o‘tish</button>
+        </form>
+
+        <div class="auth-error" id="authErrorMsg"></div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
 
     <script src="script.js"></script>
   </body>

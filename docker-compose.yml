@@ -1,0 +1,43 @@
+services:
+  pocketbase:
+    build:
+      context: .
+      dockerfile: Dockerfile.pocketbase
+    container_name: music-finder-pocketbase
+    restart: unless-stopped
+    ports:
+      - "${POCKETBASE_PORT:-8091}:8090"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - POCKETBASE_SUPERUSER_EMAIL=${POCKETBASE_SUPERUSER_EMAIL:-admin@musicfinder.com}
+      - POCKETBASE_SUPERUSER_PASSWORD=${POCKETBASE_SUPERUSER_PASSWORD:-admin123456}
+    volumes:
+      - ./pocketbase/pb_data:/pb/pb_data
+      - ./pocketbase/pb_migrations:/pb/pb_migrations:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8090/api/health || exit 1"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+      start_period: 2s
+
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: music-finder-web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./style.css:/usr/share/nginx/html/style.css:ro
+      - ./script.js:/usr/share/nginx/html/script.js:ro
+    depends_on:
+      pocketbase:
+        condition: service_healthy

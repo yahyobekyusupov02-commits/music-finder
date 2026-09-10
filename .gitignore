@@ -1,0 +1,9 @@
+# Environment variables
+.env
+
+# PocketBase data
+pocketbase/pb_data/*
+!pocketbase/pb_data/.gitkeep
+pocketbase/pocketbase
+pocketbase/CHANGELOG.md
+pocketbase/LICENSE.md

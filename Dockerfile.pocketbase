@@ -1,0 +1,14 @@
+FROM alpine:latest
+
+WORKDIR /pb
+
+COPY pocketbase/pocketbase /pb/pocketbase
+COPY pocketbase/pb_migrations /pb/pb_migrations
+COPY pocketbase/entrypoint.sh /pb/entrypoint.sh
+RUN chmod +x /pb/pocketbase /pb/entrypoint.sh
+
+EXPOSE 8090
+
+VOLUME ["/pb/pb_data"]
+
+ENTRYPOINT ["/pb/entrypoint.sh"]

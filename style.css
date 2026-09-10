@@ -1,4 +1,3 @@
-```css
 * {
   margin: 0;
   padding: 0;
@@ -770,4 +769,272 @@ main {
   }
 
 }
-```
+
+/* Active and Interactive Styles */
+.heart.active i {
+  color: #ff5d82;
+  font-weight: 900;
+}
+
+.music-card {
+  cursor: pointer;
+}
+
+.music-card.playing {
+  border-color: #9b7cff;
+  box-shadow: 0 0 20px rgba(155, 124, 255, 0.25);
+}
+
+.music-card.playing .card-play {
+  opacity: 1;
+  background: #9b7cff;
+  color: white;
+}
+
+.progress {
+  cursor: pointer;
+  position: relative;
+}
+
+.progress:hover {
+  height: 6px;
+}
+
+.popular-searches button:hover,
+.popular-searches button.active {
+  background: #25223a;
+  border-color: #8d73ff;
+  color: white;
+}
+
+.artist-card {
+  cursor: pointer;
+}
+
+.artist-card:hover {
+  border-color: #48405f;
+}
+
+/* User Profile Navbar Dropdown */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1e1e2d;
+  border: 1px solid #36364a;
+  padding: 6px 14px;
+  border-radius: 9px;
+  color: #e0e0ff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.user-badge:hover {
+  border-color: #8d73ff;
+}
+
+.user-badge i {
+  color: #9b7cff;
+}
+
+.logout-btn {
+  background: #2b1f2b;
+  border: 1px solid #5a303e;
+  color: #ff7d96;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #442231;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #161623;
+  border: 1px solid #302d44;
+  border-radius: 18px;
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.25s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  color: #7d7d92;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.modal-close:hover {
+  color: white;
+}
+
+.modal-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #29283c;
+  padding-bottom: 10px;
+}
+
+.modal-tab-btn {
+  background: transparent;
+  border: none;
+  color: #8c8ca5;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.modal-tab-btn.active {
+  color: white;
+  background: #25233c;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  color: #9d9db8;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #0e0e17;
+  border: 1px solid #2d2c3e;
+  border-radius: 9px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #8d73ff;
+}
+
+.modal-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #8d73ff;
+  border: none;
+  border-radius: 9px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 8px;
+}
+
+.modal-submit-btn:hover {
+  background: #7657f5;
+}
+
+.auth-error {
+  color: #ff6882;
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+  display: none;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background: #1c1b2b;
+  border: 1px solid #36344d;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease;
+}
+
+.toast i {
+  color: #9b7cff;
+}
+
+.toast.toast-error i {
+  color: #ff5d82;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
